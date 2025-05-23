@@ -1,5 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Jacques+Francois+Shadow&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sixtyfour+Convergence&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+body {
+  background-color: #f9d45b;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* height: 100vh; */
+}
+.container {
+  border: 1px solid red;
+  text-align: center;
+  background-color: #fdedf0;
+  width: 800px;
+  border-radius: 25px;
+  margin-top: 50px;
+}
+.container h1 {
+  font-family: "Codystar", cursive, sans-serif;
+  font-size: 100px;
+  color: #fdedf0;
+  text-shadow: 0 0 2px rgb(242, 39, 83);
+}
+.playersSection {
+  margin: 100px 0;
+}
+.gameIcon {
+  width: 50px;
+  height: 50px;
+  border: 1px solid red;
+  border-radius: 5px;
+  position: relative;
+  margin: 30px auto;
+}
+.gameIcon::before {
+  content: "X";
+  font-size: 30px;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f22753;
+  position: absolute;
+  left: 3px;
+  top: -4px;
+}
+.gameIcon::after {
+  content: "O";
+  font-size: 30px;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f22753;
+  position: absolute;
+  right: 3px;
+  bottom: -4px;
+}
+.players button {
+  width: 300px;
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: rgba(242, 39, 83, 0.75) 0px 5px;
+  margin-bottom: 20px;
+  border: none;
+  background-color: #f9d45b;
+  color: #f22753;
+  font-weight: bold;
+  font-size: 16px;
+  position: relative;
+  padding: 10px;
+}
+.players button span {
+  /* margin-right: 10px; */
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  /* font-size: 16px; */
 }
