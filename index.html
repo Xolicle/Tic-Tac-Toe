@@ -18,20 +18,30 @@
       </div>
       <div class="playersSection">
         <div class="players">
-          <button>
+          <button id="solo">
             <span class="material-symbols-sharp"> person </span>Play Solo
           </button>
         </div>
         <div class="players">
-          <button>
+          <button id="group">
             <span class="material-symbols-sharp"> group </span>Play with a
             friend
           </button>
         </div>
-        <!-- <div>
-          <button>Play</button>
-        </div> -->
       </div>
+      <div class="gamePlayers">
+        <div class="player1">
+          <h3>X</h3>
+          <h4><span>You:</span> <span id="playerOneScore">0</span></h4>
+        </div>
+        <div class="player2">
+          <h3>O</h3>
+          <h4><span>Bot:</span> <span id="playerTwoScore">0</span></h4>
+        </div>
+      </div>
+      <div class="turn"></div>
+      <div class="winner"></div>
+      <div class="gameboard"></div>
     </div>
 
     <script src="script.js"></script>

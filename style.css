@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Jacques+Francois+Shadow&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sixtyfour+Convergence&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Itim&family=Jacques+Francois+Shadow&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sixtyfour+Convergence&display=swap");
 
 * {
   padding: 0;
@@ -25,6 +25,9 @@ body {
   font-size: 100px;
   color: #fdedf0;
   text-shadow: 0 0 2px rgb(242, 39, 83);
+}
+.title {
+  margin: 20px;
 }
 .playersSection {
   margin: 100px 0;
@@ -80,3 +83,54 @@ body {
   top: 7px;
   /* font-size: 16px; */
 }
+.gameboard {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  gap: 5px;
+  width: 20vw;
+  height: 40vh;
+  padding: 10px;
+  outline: 3px dashed #f22753;
+  outline-offset: 10px;
+  border-radius: 20px;
+  margin: 80px auto 100px;
+  background-color: #f22753;
+}
+.cell {
+  border-radius: 10px;
+}
+.gamePlayers {
+  /* display: flex; */
+  justify-content: center;
+  gap: 3.125em;
+  display: none;
+}
+.player1,
+.player2 {
+  border: 1px solid red;
+  text-align: left;
+  width: 15vw;
+  padding: 5px;
+}
+.player1 h4,
+.player2 h4 {
+  display: flex;
+  justify-content: space-between;
+}
+.player1 h3,
+.player2 h3 {
+  /* background-color: #f22753;
+  width: 20%;
+  color: #f9d45b;
+  margin: auto; */
+  color: #f22753;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 30px;
+}
+
+/* font-family: "Itim", cursive;
+  font-weight: 400;
+  font-style: normal; */
