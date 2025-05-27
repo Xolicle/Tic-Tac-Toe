@@ -74,6 +74,9 @@ const displayController = (function () {
   function Player(name, marker, type = "human") {
     return { name, marker, type };
   }
+  const player1 = Player("Human", "X");
+  const player2 = Player("Bot", "O", "bot");
+  let currentPlayer = player1;
   // console.log("display");
   domManipulator.gameboard.style.display = "none";
   domManipulator.solo.addEventListener("click", () => {
@@ -85,11 +88,9 @@ const displayController = (function () {
 
     Gameboard.load();
     console.log("inside solo button");
-    humanPlayer(player1.marker);
+    // humanPlayer(player1.marker);
+    playerTurns();
   });
-  const player1 = Player("Human", "X");
-  const player2 = Player("Bot", "O");
-  let currentPlayer = player1;
 
   domManipulator.group.addEventListener("click", () => {
     domManipulator.playerSection.style.display = "none";
@@ -97,8 +98,9 @@ const displayController = (function () {
     // domManipulator.gamePlayers.style.display = "flex";
     domManipulator.gameboard.style.display = "grid";
     Gameboard.load();
-    console.log("inside group button");
+    // console.log("inside group button");
   });
+  function roundWinner() {}
   function humanPlayer(mark) {
     // console.log("checking");
     domManipulator.getCells().forEach((cell) => {
@@ -109,23 +111,46 @@ const displayController = (function () {
           );
           // console.log("X");
           Gameboard.cellMarker(mark, index);
-          takeTurn();
+          switchPlayers();
+          playerTurns();
         }
       });
     });
   }
+
+  function computerPlayer(marker) {
+    let choices = Gameboard.getGameboard().map((square, index) => {
+      if (square.mark !== "") {
+        return false;
+      } else {
+        return index;
+      }
+    });
+    choices = choices.filter((item) => {
+      return item !== false;
+    });
+    const selection = Math.floor(Math.random() * choices.length);
+    Gameboard.cellMarker(marker, choices[selection]);
+    switchPlayers();
+    playerTurns();
+  }
   function switchPlayers() {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
   }
-  function takeTurn() {
+  function playerTurns() {
     let player = "";
     if (currentPlayer == player1) {
       player = player1;
     } else {
       player = player2;
     }
-    humanPlayer(player1.marker);
-    console.log("Turn");
+    if (player.type == "bot") {
+      computerPlayer(player.marker);
+    } else {
+      humanPlayer(player.marker);
+    }
+
+    // console.log("Turn");
   }
 })();
 const game = {};
