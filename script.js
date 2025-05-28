@@ -13,15 +13,13 @@ const domManipulator = (function () {
     player2Name: document.querySelector("#player2Name"),
     turn: document.querySelector(".turn"),
     winner: document.querySelector(".winner"),
+    restart: document.querySelector(".restart"),
     getCells: function () {
       return this.gameboard.querySelectorAll(".cell");
     },
     newCell: function (mark) {
       const cell = document.createElement("div");
       cell.classList.add("cell");
-      cell.style.border = "3px dashed #f9d45b";
-      cell.style.height = "100%";
-      cell.style.width = "100%";
 
       if (mark) {
         cell.appendChild(mark);
@@ -45,6 +43,16 @@ const domManipulator = (function () {
         this.gameboard.appendChild(this.newCell(this.marker(cell.mark)));
       });
     },
+    restartFunction: function () {
+      const restartBtn = document.createElement("button");
+      restartBtn.textContent = "Play Again";
+      this.restart.appendChild(restartBtn);
+      this.container.appendChild(this.restart);
+      restartBtn.addEventListener("click", () => {
+        location.reload();
+        return false;
+      });
+    },
   };
 })();
 const Gameboard = (function () {
@@ -56,6 +64,9 @@ const Gameboard = (function () {
   const cellMarker = (mark, index) => {
     gameboard[index] = { mark };
     //display gameboard
+    // let cells = domManipulator.getCells();
+    // cells[index].classList.add(`marked-${mark.toLowerCase()}`);
+
     domManipulator.display(gameboard);
   };
   const load = () => {
@@ -87,9 +98,11 @@ const displayController = (function () {
     domManipulator.gameboard.style.display = "grid";
 
     Gameboard.load();
+
     console.log("inside solo button");
     // humanPlayer(player1.marker);
     playerTurns();
+    domManipulator.restartFunction();
   });
 
   domManipulator.group.addEventListener("click", () => {
@@ -98,7 +111,8 @@ const displayController = (function () {
     // domManipulator.gamePlayers.style.display = "flex";
     domManipulator.gameboard.style.display = "grid";
     Gameboard.load();
-    // console.log("inside group button");
+    player2.type = "human";
+    playerTurns();
   });
 
   function roundWinner() {
@@ -130,10 +144,12 @@ const displayController = (function () {
     }
     if (winnerMark == "X") {
       console.log(`Winner is player 1`);
+      domManipulator.turn.style.display = "none";
       domManipulator.winner.textContent = `Winner is player 1`;
       return true;
     } else if (winnerMark == "O") {
       console.log(`Winner is player 2`);
+      domManipulator.turn.style.display = "none";
       domManipulator.winner.textContent = `Winner is player 2`;
       return true;
     } else if (
@@ -141,10 +157,12 @@ const displayController = (function () {
         return cell.mark !== "";
       }).length === 9
     ) {
+      domManipulator.turn.style.display = "none";
       domManipulator.winner.textContent = `Draw`;
       return true;
     } else return false;
   }
+  // console.log(domManipulator.getCells());
 
   function humanPlayer(mark) {
     // console.log("checking");
@@ -154,7 +172,8 @@ const displayController = (function () {
           const index = Array.from(e.currentTarget.parentNode.children).indexOf(
             e.currentTarget
           );
-          // console.log("X");
+          // console.log(cell.);
+
           Gameboard.cellMarker(mark, index);
           switchPlayers();
           playerTurns();
@@ -187,8 +206,10 @@ const displayController = (function () {
       let player = "";
       if (currentPlayer == player1) {
         player = player1;
+        domManipulator.turn.textContent = "Player 1 turn";
       } else {
         player = player2;
+        domManipulator.turn.textContent = "Player 2 turn";
       }
       if (player.type == "bot") {
         computerPlayer(player.marker);
@@ -200,19 +221,4 @@ const displayController = (function () {
     // console.log("Turn");
   }
 })();
-const game = {};
-
-// domManipulator.getCells().forEach((cell) => {
-//   cell.addEventListener("click", () => {
-//     const clickedCell = e.currentTarget;
-//     const markSpan = clickedCell.querySelector(".markType");
-//     if (markSpan && markSpan.textContent === "") {
-//       const currentPlayerMark = "X";
-//       markSpan.textContent = currentPlayerMark;
-
-//       markSpan.classList.add("placed-mark");
-//       markSpan.classList.add(currentPlayerMark.toLowerCase());
-//     }
-//     console.log("X");
-//   });
-// });
+// const game = {};
