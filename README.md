@@ -6,7 +6,7 @@
 
 ## Description
 
-A Tic-Tac-Toe game project to practice JavaScript object-oriented programming principles. Link to the game: https://xolicle.github.io/Tic-Tac-Toe/
+A Tic-Tac-Toe game project to practice JavaScript object-oriented programming principles. [Play the game here] (https://xolicle.github.io/Tic-Tac-Toe/)
 
 ## Features
 
