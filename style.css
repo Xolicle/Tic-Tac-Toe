@@ -123,19 +123,14 @@ body {
   border: 1px solid red;
   text-align: left;
   width: 15vw;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 10px;
 }
-.player1 h4,
-.player2 h4 {
-  display: flex;
-  justify-content: space-between;
-}
+
 .player1 h3,
 .player2 h3 {
-  /* background-color: #f22753;
-  width: 20%;
-  color: #f9d45b;
-  margin: auto; */
+  display: flex;
+  justify-content: space-evenly;
   color: #f22753;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;

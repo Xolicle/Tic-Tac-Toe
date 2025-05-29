@@ -105,11 +105,14 @@ const displayController = (function () {
   domManipulator.group.addEventListener("click", () => {
     domManipulator.playerSection.style.display = "none";
     domManipulator.gameIcon.style.display = "none";
-    // domManipulator.gamePlayers.style.display = "flex";
+
+    domManipulator.gamePlayers.style.display = "flex";
     domManipulator.gameboard.style.display = "grid";
+    domManipulator.player2Name.textContent = "Mate:";
     Gameboard.load();
     player2.type = "human";
     playerTurns();
+    domManipulator.restartFunction();
   });
 
   function roundWinner() {
