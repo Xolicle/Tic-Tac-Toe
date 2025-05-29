@@ -49,7 +49,7 @@ const domManipulator = (function () {
       this.restart.appendChild(restartBtn);
       this.container.appendChild(this.restart);
       restartBtn.addEventListener("click", () => {
-        location.reload();
+        window.location.reload();
         return false;
       });
     },
@@ -64,9 +64,6 @@ const Gameboard = (function () {
   const cellMarker = (mark, index) => {
     gameboard[index] = { mark };
     //display gameboard
-    // let cells = domManipulator.getCells();
-    // cells[index].classList.add(`marked-${mark.toLowerCase()}`);
-
     domManipulator.display(gameboard);
   };
   const load = () => {
@@ -99,7 +96,7 @@ const displayController = (function () {
 
     Gameboard.load();
 
-    console.log("inside solo button");
+    // console.log("inside solo button");
     // humanPlayer(player1.marker);
     playerTurns();
     domManipulator.restartFunction();
@@ -172,8 +169,7 @@ const displayController = (function () {
           const index = Array.from(e.currentTarget.parentNode.children).indexOf(
             e.currentTarget
           );
-          // console.log(cell.);
-
+          console.log(cell);
           Gameboard.cellMarker(mark, index);
           switchPlayers();
           playerTurns();

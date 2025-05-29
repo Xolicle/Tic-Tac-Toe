@@ -155,8 +155,15 @@ body {
   font-size: 20px;
   font-weight: bold;
 }
-.restart {
+.restart button {
+  width: 300px;
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: none;
+  background-color: #f9d45b;
+  color: #f22753;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
 }
-/* .marked-x {
-  background-color: blue;
-} */
